@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UYARI: Sistem Sorunu</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: lime;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    h1 {
+      font-size: 3rem;
+      animation: pulse 1s infinite;
+    }
+    #start {
+      padding: 20px 40px;
+      font-size: 20px;
+      background: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+    .warning {
+      font-size: 24px;
+      color: red;
+      display: none;
+      margin-top: 20px;
+      animation: blink 0.3s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    #endMessage {
+      display: none;
+      font-size: 36px;
+      color: yellow;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>UYARI: Sistem Düzensizliği Algılandı!</h1>
+  <button id="start" onclick="startMadness()">Taramayı Başlat</button>
+  <div class="warning" id="warning">!!! HATA: Bellek Çökmesi !!!</div>
+  <div id="endMessage">😄 Şaka! Her şey yolunda... Ama panik güzeldi! 😂</div>
+
+  <audio id="sound" src="https://www.myinstants.com/media/sounds/windows-xp-error.mp3"></audio>
+
+  <script>
+    let madnessStarted = false;
+    let shakeInterval;
